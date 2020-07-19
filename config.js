@@ -6,28 +6,11 @@ const config = {
     trailingSlash: false,
   },
   header: {
-    logo: 'https://graphql-engine-cdn.hasura.io/learn-hasura/assets/homepage/brand.svg',
-    logoLink: 'https://hasura.io/learn/',
-    title:
-      "<a href='https://hasura.io/learn/'><img class='img-responsive' src='https://graphql-engine-cdn.hasura.io/learn-hasura/assets/homepage/learn-logo.svg' alt='Learn logo' /></a>",
-    githubUrl: 'https://github.com/hasura/gatsby-gitbook-boilerplate',
-    helpUrl: '',
-    tweetText: '',
-    social: `<li>
-		    <a href="https://twitter.com/hasurahq" target="_blank" rel="noopener">
-		      <div class="twitterBtn">
-		        <img src='https://graphql-engine-cdn.hasura.io/learn-hasura/assets/homepage/twitter-brands-block.svg' alt={'Discord'}/>
-		      </div>
-		    </a>
-		  </li>
-			<li>
-		    <a href="https://discordapp.com/invite/hasura" target="_blank" rel="noopener">
-		      <div class="discordBtn">
-		        <img src='https://graphql-engine-cdn.hasura.io/learn-hasura/assets/homepage/discord-brands-block.svg' alt={'Discord'}/>
-		      </div>
-		    </a>
-		  </li>`,
-    links: [{ text: '', link: '' }],
+    // logo: 'https://graphql-engine-cdn.hasura.io/learn-hasura/assets/homepage/brand.svg',
+    // logoLink: 'https://hasura.io/learn/',
+    title: 'Project',
+    githubUrl: 'https://github.com/Code4Good-UWMadison/LIFT_webinar',
+    // links: [{ text: '', link: '' }],
     search: {
       enabled: false,
       indexName: '',
@@ -39,16 +22,16 @@ const config = {
   sidebar: {
     forcedNavOrder: [
       '/introduction', // add trailing slash if enabled above
-      '/codeblock',
+      '/1',
     ],
-    collapsedNav: [
-      '/codeblock', // add trailing slash if enabled above
-    ],
+    // collapsedNav: [
+    //   '/codeblock', // add trailing slash if enabled above
+    // ],
     links: [{ text: 'Hasura', link: 'https://hasura.io' }],
     frontline: false,
     ignoreIndex: true,
     title:
-      "<a href='https://hasura.io/learn/'>graphql </a><div class='greenCircle'></div><a href='https://hasura.io/learn/graphql/react/introduction/'>react</a>",
+      "<a href='https://www.coding4good.net'>Coding for Good</a>&nbspX&nbsp<a href='https://www.liftdane.org'>LIFT Dane</a>",
   },
   siteMetadata: {
     title: 'Gatsby Gitbook Boilerplate | Hasura',
