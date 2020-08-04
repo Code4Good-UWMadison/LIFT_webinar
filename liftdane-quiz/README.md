@@ -1,3 +1,15 @@
+<img width="1439" alt="Screenshot 2020-08-04 at 6 17 22 PM" src="https://user-images.githubusercontent.com/65245684/89295585-dc643700-d67e-11ea-99d0-0f2434e3abbc.png">
+
+<img width="1440" alt="Screenshot 2020-08-04 at 6 17 33 PM" src="https://user-images.githubusercontent.com/65245684/89295664-ef770700-d67e-11ea-8bd8-aae9cc45e1e3.png">
+
+
+<img width="1438" alt="Screenshot 2020-08-04 at 6 17 42 PM" src="https://user-images.githubusercontent.com/65245684/89295714-fc93f600-d67e-11ea-8096-b78370fe6006.png">
+
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
