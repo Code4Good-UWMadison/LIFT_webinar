@@ -10,7 +10,26 @@ import { Edit, StyledHeading, StyledMainWrapper } from '../components/styles/Doc
 
 const forcedNavOrder = config.sidebar.forcedNavOrder;
 
+const styles = {
+  button: {
+    minWidth: 80,
+    height: 30,
+    margin: 5,
+    borderColor: '#d6d7da',
+    borderWidth: 2,
+    borderRadius: 8,
+    alignItems: 'center',
+    backgroundColor: '#AFEEEE',
+  },
+};
+
 export default class MDXRuntimeTest extends Component {
+  voice = () => {
+    var msg = new SpeechSynthesisUtterance('Hello World');
+
+    window.speechSynthesis.speak(msg);
+  };
+
   render() {
     const { data } = this.props;
 
@@ -103,6 +122,9 @@ export default class MDXRuntimeTest extends Component {
         <StyledMainWrapper>
           <MDXRenderer>{mdx.body}</MDXRenderer>
         </StyledMainWrapper>
+        <button style={styles.button} onClick={this.voice}>
+          Voice Over
+        </button>
         <div className={'addPaddTopBottom'}>
           <NextPrevious mdx={mdx} nav={nav} />
         </div>
