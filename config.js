@@ -22,7 +22,25 @@ const config = {
   sidebar: {
     forcedNavOrder: [
       '/introduction', // add trailing slash if enabled above
-      '/1',
+      '/01',
+      '/02',
+      '/03',
+      '/04',
+      '/05',
+      '/06',
+      '/07',
+      '/08',
+      '/09',
+      '/10',
+      '/11',
+      '/12',
+      '/13',
+      '/13.5',
+      '/14',
+      '/15',
+      '/16',
+      '/17',
+      '/18',
     ],
     // collapsedNav: [
     //   '/codeblock', // add trailing slash if enabled above
@@ -37,7 +55,7 @@ const config = {
     title: 'Gatsby Gitbook Boilerplate | Hasura',
     description: 'Documentation built with mdx. Powering hasura.io/learn ',
     ogImage: null,
-    docsLocation: 'https://github.com/hasura/gatsby-gitbook-boilerplate/tree/master/content',
+    docsLocation: 'https://github.com/Code4Good-UWMadison/LIFT_webinar/tree/master/content',
     favicon: 'https://graphql-engine-cdn.hasura.io/img/hasura_icon_black.svg',
   },
   pwa: {
