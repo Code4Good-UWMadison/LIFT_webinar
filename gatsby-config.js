@@ -21,6 +21,7 @@ const plugins = [
       path: `${__dirname}/content/`,
     },
   },
+  'gatsby-transformer-pdf',
   {
     resolve: 'gatsby-plugin-mdx',
     options: {
