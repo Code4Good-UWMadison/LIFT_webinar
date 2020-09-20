@@ -122,9 +122,7 @@ export default class MDXRuntimeTest extends Component {
         <StyledMainWrapper>
           <MDXRenderer>{mdx.body}</MDXRenderer>
         </StyledMainWrapper>
-        <button style={styles.button} onClick={this.voice}>
-          Voice Over
-        </button>
+
         <div className={'addPaddTopBottom'}>
           <NextPrevious mdx={mdx} nav={nav} />
         </div>
@@ -132,6 +130,10 @@ export default class MDXRuntimeTest extends Component {
     );
   }
 }
+
+// <button style={styles.button} onClick={this.voice}>
+// Voice Over
+// </button>
 
 export const pageQuery = graphql`
   query($id: String!) {
