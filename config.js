@@ -40,14 +40,14 @@ const config = {
             '/16',
             '/17',
             '/18',
+            '/end',
         ],
         // collapsedNav: [
         //   '/codeblock', // add trailing slash if enabled above
         // ],
-        links: [{ text: 'Hasura', link: 'https://hasura.io' }],
         frontline: false,
         ignoreIndex: true,
-        title: "<a href='https://www.coding4good.net'>Coding for Good</a>&nbspX&nbsp<a href='https://www.liftdane.org'>LIFT Dane</a>",
+        title: "<a href='https://www.coding4good.net'>C4G&nbsp;</a> &nbsp; x &nbsp; <a href='https://www.liftdane.org'>LIFT Dane</a>",
     },
     siteMetadata: {
         title: 'Gatsby Gitbook Boilerplate | Hasura',
