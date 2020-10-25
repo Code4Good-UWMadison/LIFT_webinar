@@ -51,6 +51,8 @@ class Scenario extends Component {
       scene: '0',
       hourlyWage: 7.25,
       hoursWork: 30,
+      fixBrakeLight: 'false',
+      ignoredBrakeTicket: 'false',
       monthlyIncome: 941.78,
       monthlyExpenses: {
         total: 900,
@@ -70,6 +72,8 @@ class Scenario extends Component {
       cntNoRent: 0,
       cntNoChildcare: 0,
       scene: '0',
+      fixBrakeLight: 'false',
+      ignoredBrakeTicket: 'false',
       monthlyIncome: 941.78,
       monthlyExpenses: {
         total: 900,
@@ -103,8 +107,15 @@ class Scenario extends Component {
   partialRent = () => {
     const newCntNoRent = this.state.cntNoRent + 1;
     var newScene = '';
+
     if (newCntNoRent == 1 && this.state.cntTickets == 2) {
-      newScene = 'brokenLightNoSuspension';
+      if (this.state.fixBrakeLight == 'true') {
+        newScene = 'partialRentEvictionWarning';
+      } else if (this.state.ignoredBrakeTicket == 'true') {
+        newScene = 'unpaidBrakeTickeUnpaidRent';
+      } else {
+        newScene = 'brokenLightNoSuspension';
+      }
     } else {
       newScene = '2A3A4';
     }
@@ -119,7 +130,13 @@ class Scenario extends Component {
   partialChildCare = () => {
     const newNoChildcare = this.state.cntNoChildcare + 1;
     var newScene = '';
-    if (this.state.cntTickets == 1 && newNoChildcare == 1) {
+    if (this.state.ignoredBrakeTicket == 'true') {
+      if (this.state.unpaidForfeitures == 1) {
+        newScene = 'unpaidBrakeTickeUnpaidChildCare';
+      } else {
+        newScene = 'unpaidChildCare';
+      }
+    } else if (this.state.cntTickets == 1 && newNoChildcare == 1) {
       newScene = '2A3A4';
     } else {
       newScene = 'unpaidChildCare';
@@ -214,10 +231,13 @@ class Scenario extends Component {
   };
   ignoreBrakeTicket = () => {
     const newunpaidForfeitures = this.state.unpaidForfeitures + 1;
+    const newCntTickets = this.state.cntTickets + 1;
     this.setState({
       scene: 'brakeTicketUnpaid',
       unpaidForfeitures: newunpaidForfeitures,
       ticket: 'speeding',
+      ignoredBrakeTicket: 'true',
+      cntTickets: newCntTickets,
     });
   };
 
@@ -227,6 +247,7 @@ class Scenario extends Component {
     this.setState({
       scene: 'fixedLight',
       monthlyIncome: newMonthlyIncome,
+      fixBrakeLight: 'true',
     });
   };
 
@@ -241,7 +262,8 @@ class Scenario extends Component {
   ignoreSpeedingTicket = () => {
     const newunpaidForfeitures = this.state.unpaidForfeitures + 1;
     var newScene = '';
-    if (this.state.ticket == 'speeding') {
+
+    if (this.state.ticket == 'speeding' || this.state.fixBrakeLight == 'true') {
       newScene = 'SpeedingLicenseSuspended';
     } else {
       newScene = 'brokenLightNoSuspension';
@@ -297,6 +319,7 @@ class Scenario extends Component {
               <button style={styles.button} onClick={this.ignoreBrakeTicket}>
                 Ignore the {this.state.ticket} ticket for now, hopefully you can pay it off later.
               </button>
+              
             </div>
           </div>
         );
@@ -511,14 +534,79 @@ class Scenario extends Component {
           );
         }
         break;
+      case 'unpaidBrakeTickeUnpaidRent':
+        main = (
+          <div style={styles.txt} id="text">
+            {this.state.scene}
+            {this.state.unpaidForfeitures}
+            <div>{this.state.cntTickets}</div>
+            The same police officer who pulled you over for a broken brake light pulls you over
+            again because it is still broken. You are issued a traffic citation with a forfeiture of
+            $150 under Wis. Stat. § 347.30(2). What do you do?
+            <div style={styles.rows}>
+              <button style={styles.button} onClick={this.payTicketIgnoreFixing}>
+                Pay off the $150 ticket, making you short on your normal monthly expenses.
+              </button>
+              <button style={styles.button}>
+                Seek help. You don’t know how to pay all these forfeitures.
+              </button>
+              <button style={styles.button} onClick={this.restart}>
+                Restart
+              </button>
+            </div>
+          </div>
+        );
 
-      case '2A3A4':
-        if (this.state.cntNoRent != 2) {
+        break;
+      case 'unpaidBrakeTickeUnpaidChildCare':
+        if (this.state.cntNoChildcare == 1) {
           main = (
             <div style={styles.txt} id="text">
               {this.state.scene}
               {this.state.unpaidForfeitures}
               <div>{this.state.cntTickets}</div>
+              The same police officer who pulled you over for a broken brake light pulls you over
+              again because it is still broken. You are issued a traffic citation with a forfeiture
+              of $150 under Wis. Stat. § 347.30(2). What do you do?
+              <div style={styles.rows}>
+                <button style={styles.button} onClick={this.payTicketIgnoreFixing}>
+                  Pay off the $150 ticket, making you short on your normal monthly expenses.
+                </button>
+                <button style={styles.button}>
+                  Seek help. You don’t know how to pay all these forfeitures.
+                </button>
+                <button style={styles.button} onClick={this.restart}>
+                  Restart
+                </button>
+              </div>
+            </div>
+          );
+        } else {
+          main = (
+            <div style={styles.txt} id="text">
+              Your childcare provider warns you that you need to makeup this month’s payment within
+              two weeks or you can no longer bring your child. Unfortunately, you are not able to
+              increase your hours at work, and you have no way to makeup these costs. You have to
+              stop taking your child to daycare. What do you do?
+              <button style={styles.button}>
+                Seek legal help. If you are evicted, you will not be able to find another apartment.
+              </button>
+              <div>
+                <button style={styles.button} onClick={this.restart}>
+                  Restart
+                </button>
+              </div>
+            </div>
+          );
+        }
+        break;
+      case '2A3A4':
+        if (this.state.cntNoRent != 2) {
+          main = (
+            <div style={styles.txt} id="text">
+              {/* {this.state.scene}
+              {this.state.unpaidForfeitures}
+              <div>{this.state.cntTickets}</div> */}
               You get pulled over again for speeding in violation of Wis. Stat. § 346.57(2). You are
               issued a traffic citation with a forfeiture of $200 under Wis. Stat. § 346.60(3). What
               do you do?
@@ -533,9 +621,11 @@ class Scenario extends Component {
                 <button style={styles.button} onClick={this.ignoreSpeedingTicket}>
                   Ignore the speeding ticket for now, hopefully you can pay it off later.
                 </button>
+                <div>
                 <button style={styles.button} onClick={this.restart}>
                   Restart
                 </button>
+                </div>
               </div>
             </div>
           );
@@ -582,26 +672,6 @@ class Scenario extends Component {
           </div>
         );
         break;
-
-      // case "2A3A4B5":
-      //   main = (
-      //     <div style={styles.txt} id="text">
-      //         You missed a day of work and went to court without a lawyer. The judge gave you a point reduction but did not reduce your forfeiture amount.
-      //          Because you missed a day of work, your monthly income is only ${this.state.monthlyIncome}. What do you do?
-      //       <div>
-      //         <button style={styles.button} onClick={this.payTicketNoExpenses}>
-      //         Pay the speeding ticket, making you short for your other monthly expenses.
-      //         </button>
-      //         <button style={styles.button} onClick={this.ignoreTicket}>
-      //         Ignore the speeding ticket and pay your normal monthly expenses.
-      //         </button>
-      //         <button style={styles.button} onClick={this.restart}>
-      //           Restart
-      //         </button>
-      //       </div>
-      //     </div>
-      //   );
-      //   break;
 
       case 'unpaidChildCare':
         if (this.state.cntNoChildcare != 2) {
@@ -706,21 +776,6 @@ class Scenario extends Component {
         }
         break;
 
-      // case "firstBrakeSecSpeed":
-      //   main = (
-      //     <div style={styles.txt} id="text">
-      //       The same police officer who pulled you over for a broken brake light pulls you over again because it is still broken.
-      //       You receive a ticket for the broken brake light and another for driving without a license under Wis. Stat. § 343.05(3)(a) with a forfeiture of $300.
-      //        What do you do?
-
-      //        <button style={styles.button} >
-      //           Seek legal help. The forfeitures are becoming insurmountable, and you need to drive to work.
-      //         </button>
-      //         <button style={styles.button} onClick={this.restart}>
-      //           Restart
-      //         </button>
-      //     </div>
-      //   )
       case 'brokenLightNoSuspension':
         if (this.state.unpaidForfeitures != 1) {
           main = (
@@ -759,6 +814,9 @@ class Scenario extends Component {
                   Ignore the ticket for now, hopefully you can pay it off later, and postpone fixing
                   your brake light.
                 </button>
+                <button style={styles.button} onClick={this.restart}>
+                Restart
+              </button>
               </div>
             </div>
           );
