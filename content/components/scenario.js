@@ -866,7 +866,6 @@ class Scenario extends Component {
         );
         break;
 
-      case 'getHelp':
         main = (
           <div style={styles.txt} id="text">
             {this.state.scene}{''}
