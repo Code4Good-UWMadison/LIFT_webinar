@@ -333,8 +333,7 @@ class Scenario extends Component {
             {this.state.scene}
             You paid off your ticket, that means that your monthly expenses were $
             {this.state.monthlyExpenses.total} (your normal monthly expenses of ${monthlyExpenses} +
-            ${this.state.monthlyExpenses.currFine} for your
-            {this.state.ticket} ticket). This means that you were short on your monthly expenses.
+            ${this.state.monthlyExpenses.currFine} for your {this.state.ticket} ticket). This means that you were short on your monthly expenses.
             What do you do?
             <div>
               <button style={styles.button} onClick={this.partialRent}>
@@ -632,8 +631,7 @@ class Scenario extends Component {
         } else {
           main = (
             <div style={styles.txt} id="text">
-              You have now paid only a portion of your rent two months in a row ($450/$600 last
-              month and $400/$600 this month). Your landlord gives you an eviction notice. What do
+              You have now paid only a portion of your rent two months in a row. Your landlord gives you an eviction notice. What do
               you do?
               <button style={styles.button}>
                 Seek legal help. If you are evicted, you will not be able to find another apartment.
@@ -685,7 +683,7 @@ class Scenario extends Component {
               you quit your job and stay home with your child. Now your income is gone. What do you
               do?
               <button style={styles.button}>
-                Seek legal help. If you cannot pay your rent, you risk eviction.
+              Seek help. Without childcare, you cannot work. You need income.
               </button>
               <div>
                 <button style={styles.button} onClick={this.restart}>
@@ -703,7 +701,7 @@ class Scenario extends Component {
               you quit your job and stay home with your child. Now your income is gone. What do you
               do?
               <button style={styles.button}>
-                Seek legal help. If you cannot pay your rent, you risk eviction.
+              Seek legal help. Without childcare, you cannot work. You need income.
               </button>
               <div>
                 <button style={styles.button} onClick={this.restart}>
@@ -717,8 +715,7 @@ class Scenario extends Component {
             <div style={styles.txt} id="text">
               {this.state.scene}
               {this.state.unpaidForfeitures}
-              This is the second month in a row that you have missed parts of your childcare payment
-              (last month you paid $50/$200, this month you paid $0/$200). Your childcare provider
+              This is the second month in a row that you have missed parts of your childcare payment. Your childcare provider
               tells you to stop bringing your child until you make up the full $350 you owe. What do
               you do?
               <button style={styles.button}>
