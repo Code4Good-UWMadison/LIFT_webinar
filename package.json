@@ -44,6 +44,7 @@
         "pdfjs-dist": "^2.5.207",
         "plotly.js": "^1.56.0",
         "react": "^16.13.1",
+        "react-accessible-accordion": "^3.3.3",
         "react-dom": "^16.13.1",
         "react-feather": "^2.0.8",
         "react-github-btn": "^1.2.0",
