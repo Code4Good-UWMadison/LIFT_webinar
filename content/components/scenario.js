@@ -259,13 +259,6 @@ class Scenario extends Component {
       unpaidForfeitures: newunpaidForfeitures,
     });
   };
-
-  getHelp = () =>{
-    this.setState({
-      scene: 'getHelp',
-      
-    })
-  }
   ignoreSpeedingTicket = () => {
     const newunpaidForfeitures = this.state.unpaidForfeitures + 1;
     var newScene = '';
@@ -550,10 +543,9 @@ class Scenario extends Component {
             again because it is still broken. You are issued a traffic citation with a forfeiture of
             $150 under Wis. Stat. § 347.30(2). What do you do?
             <div style={styles.rows}>
-        {/*TODO: talk to Kelsey about the scenario 2C3A4B5 */}
-              {/* <button style={styles.button} onClick={this.payTicketIgnoreFixing}>
+              <button style={styles.button} onClick={this.payTicketIgnoreFixing}>
                 Pay off the $150 ticket, making you short on your normal monthly expenses.
-              </button> */}
+              </button>
               <button style={styles.button}>
                 Seek help. You don’t know how to pay all these forfeitures.
               </button>
@@ -865,19 +857,6 @@ class Scenario extends Component {
           </div>
         );
         break;
-
-        main = (
-          <div style={styles.txt} id="text">
-            {this.state.scene}{''}
-          conclusion message
-          <div>
-            <button style={styles.button} onClick={this.restart}>
-              Restart
-            </button>
-          </div>
-        </div>
-        );
-        break;  
 
       case 'stopDriving':
         main = (
