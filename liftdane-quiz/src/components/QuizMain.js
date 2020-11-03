@@ -17,25 +17,37 @@ export default class Quiz extends Component {
     },
     answers: {
     1: {
-      1: '16',
-      2: '18',
-      3: '21',
+      1: 'The driver has a suspension/revocation for failure to pay a forfeiture',
+      2: 'The driver has a suspension/revocation for operating while suspended',
+      3: 'The driver has a suspension/revocation for operating while intoxicated',
     },
     2: {
-      1: 'Madison',
-      2: 'Milwaukee',
-      3: 'Oconto',
+      1: 'Expired',
+      2: 'Revoked',
+      3: 'Suspended',
     },
     3: {
-      1: 'Once every 30 mins',
-      2: 'Once every 2 hours',
-      3: 'Once every 3 hours',
-    }
+      1: 'Three',
+      2: 'Two',
+      3: 'One',
+    },
+      4:{
+      1: 'State circuit court',
+      2: 'Municipal court',   
+},
+      5: {
+        1: 'Three',
+        2: 'Two',
+        3: 'One',
+      }
+      
   },
     correctAnswers: {
-      1: '1',
-      2: '1',
-      3: '2',
+      1: '3',
+      2: '2',
+      3: '1',
+       4: '2',
+       5: '3',
 
 
     },
