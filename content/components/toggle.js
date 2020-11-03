@@ -56,7 +56,7 @@ const items = [
     },
     {
         uuid: 10,
-        heading: "Operating While Intoxicated Suspensions",
+        heading: "Operating While Intoxicated Revocations",
         content: "An 'Operating While Intoxicated (OWI) revocation occurs for different lengths of time based upon the number of previous OWI tickets the individual has received.        ",
     },
     {
