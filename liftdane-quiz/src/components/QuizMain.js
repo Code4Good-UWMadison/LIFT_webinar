@@ -8,9 +8,11 @@ export default class Quiz extends Component {
   state = {
     questions: {
 
-      1: 'What is the minimum age requirement for a drivers license in the state of Wisconsin?',
-      2: 'What is the capital of Wisconsin?',
-      3: 'How often do people get a speeding ticket on I-90?'
+      1: 'Looking at the “Additional Customer Information” what prediction can you make?',
+      2: 'What is the status of this individual’s driver’s license?',
+      3: 'If you were working with this client on March 1, 2019, how many active suspensions/revocations would this client be facing?',
+      4: 'From which court do these client’s revocations originate from?',
+      5: 'Assuming that the date is March 1, 2020, how many active suspensions/revocations does this client have?',
 
     },
     answers: {
