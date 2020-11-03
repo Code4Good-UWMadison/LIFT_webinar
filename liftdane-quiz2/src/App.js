@@ -2,7 +2,7 @@ import React from 'react';
 import Quiz from './components/QuizMain'
 import './App.css';
 
-function App() {
+function Quiz2() {
   return (
     <div className="App">
     <Quiz />
@@ -11,4 +11,4 @@ function App() {
   );
 }
 
-export default App;
+export default Quiz2;
