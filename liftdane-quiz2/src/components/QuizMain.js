@@ -103,6 +103,7 @@ export default class Quiz extends Component {
                               clickedAnswer={clickedAnswer}
                           />
                           <button
+                          style={{marginTop: 15 + "px"}}
                           className="NextStep"
                           disabled={
                               clickedAnswer && Object.keys(questions).length >= step
@@ -113,11 +114,11 @@ export default class Quiz extends Component {
                           <div className="finalPage">
                               <h1>You have completed the quiz!</h1>
                               <p>Your score is: {score} of {Object.keys(questions).length}</p>
-                              <p>1: The answer is C. Suspended. The top of the Abstract states this status with the abbreviation “SUS.” Critically, the Abstract also shows in purple font that no license was issued for this driver. A driver who has never had a driver’s license may have to address a suspension before getting a license at all.</p>
+                              {/* <p>1: The answer is C. Suspended. The top of the Abstract states this status with the abbreviation “SUS.” Critically, the Abstract also shows in purple font that no license was issued for this driver. A driver who has never had a driver’s license may have to address a suspension before getting a license at all.</p>
                               <p>2: The answer is A. Driver record. This individual’s first suspension can be found by scrolling to the bottom of the Abstract to read it chronologically. The first suspension occurred on August 24, 2016 as a result of points accrued from the following violations: operating without driver license (3 points); operating without driver license (6 points); and operating without driver license; (6 points). Thus, not having a driver’s license at all led to tickets that led to a suspension.</p>
                               <p>3: The correct answer is B. One. Only the most recent suspension, a one-year suspension beginning on November 7, 2019, is still in effect.</p>
                               <p>4: The correct answer is A. Two. The most recent suspension, a one-year suspension beginning on November 7, 2019, is still in effect and the 265-day suspension beginning April 11, 2019 is in effect until January 1, 2020. </p>
-                              <p>5: The correct answer is C. The debts still exist. Although the suspensions themselves have run they are not active––the underlying forfeitures still have not been paid and could result in collections actions. </p>
+                              <p>5: The correct answer is C. The debts still exist. Although the suspensions themselves have run they are not active––the underlying forfeitures still have not been paid and could result in collections actions. </p> */}
                               <p>Thank you!</p>
                           </div>
                       )

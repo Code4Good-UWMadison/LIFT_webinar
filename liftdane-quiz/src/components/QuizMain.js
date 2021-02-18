@@ -103,6 +103,7 @@ export default class Quiz extends Component {
                               clickedAnswer={clickedAnswer}
                           />
                           <button
+                          style={{marginTop: 15 + "px"}}
                           className="NextStep"
                           disabled={
                               clickedAnswer && Object.keys(questions).length >= step
@@ -113,11 +114,11 @@ export default class Quiz extends Component {
                           <div className="finalPage">
                               <h1>You have completed the quiz!</h1>
                               <p>Your score is: {score} of {Object.keys(questions).length}</p>
-                              <p>1. The answer is C. The driver has a suspension/revocation for operating while intoxicated. The requirement for a BAC under .02 and an ignition interlock device indicates an infraction related to alcohol. </p>
+                              {/* <p>1. The answer is C. The driver has a suspension/revocation for operating while intoxicated. The requirement for a BAC under .02 and an ignition interlock device indicates an infraction related to alcohol. </p>
                               <p>2. The answer is B. Revoked. You should always check the status listed at the top of the Abstract. Remember, even if the status is revoked, there may also be current suspensions too.</p>
                               <p>3. The answer is A. Three. This client is facing (1) a one-year revocation ending on October 3, 2019 for implied consent refusal; (2) a nine-month revocation ending on July 4, 2019 for operating while intoxicated; and (3) an indefinite revocation for failure to appear at an alcohol assessment that began on February 19, 2019. None of these revocations have ended by March 1, 2019. </p>
                               <p>4: The answer is B. Municipal court. You can see this in the “Authority” line for each revocation. In a nonredacted Abstract, you would also see the case number for each revocation</p>
-                              <p>5: The answer is C. One. This client is facing only an indefinite revocation for failure to appear at an alcohol assessment that began on February 2, 2019. The other two revocations on this Abstract (a one-year revocation ending on October 3, 2019 for implied consent refusal and a nine-month revocation ending on July 4, 2019 for operating while intoxicated) have already run.</p>
+                              <p>5: The answer is C. One. This client is facing only an indefinite revocation for failure to appear at an alcohol assessment that began on February 2, 2019. The other two revocations on this Abstract (a one-year revocation ending on October 3, 2019 for implied consent refusal and a nine-month revocation ending on July 4, 2019 for operating while intoxicated) have already run.</p> */}
                               <p>Thank you!</p>
 
                           </div>
