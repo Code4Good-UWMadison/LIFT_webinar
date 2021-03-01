@@ -78,9 +78,9 @@ const Layout = ({ children, location }) => (
         <Content>
           <MaxWidth>{children}</MaxWidth>
         </Content>
-        <RightSideBarWidth className={'hiddenMobile'}>
+        {/* <RightSideBarWidth className={'hiddenMobile'}>
           <RightSidebar location={location} />
-        </RightSideBarWidth>
+        </RightSideBarWidth> */}
       </Wrapper>
     </MDXProvider>
   </ThemeProvider>
