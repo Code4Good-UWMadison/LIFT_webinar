@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import { Link } from 'gatsby';
+//import xlsxFile from 'read-excel-file';
 const styles = {
   rect: {
     minWidth: 500,
@@ -16,12 +17,13 @@ const styles = {
   },
   button: {
     minWidth: 80,
-    height: 30,
+    height: 'auto',
     margin: 5,
     borderColor: '#d6d7da',
     borderWidth: 2,
     borderRadius: 8,
-    alignItems: 'center',
+    //alignItems: 'left',
+    textAlign: 'left',
     backgroundColor: '#AFEEEE',
   },
   txt: {
@@ -43,6 +45,7 @@ class Scenario extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      currentCase: '',
       unpaidForfeitures: 0,
       cntTickets: 0,
       ticket: 'brake light',
@@ -66,6 +69,7 @@ class Scenario extends Component {
 
   restart = () => {
     this.setState({
+      currentCase: '',
       unpaidForfeitures: 0,
       ticket: 'brake light',
       cntTickets: 0,
@@ -85,6 +89,7 @@ class Scenario extends Component {
     });
   };
 
+  //method handler when user chooses to pay ticket, but postpone fixing light in the first choice
   scene1 = () => {
     const newunpaidForfeitures = this.state.unpaidForfeitures + 1;
     const newTotal =
@@ -94,6 +99,7 @@ class Scenario extends Component {
       150;
 
     this.setState({
+      currentCase: '2A3',
       scene: '2A3',
       cntTickets: this.state.cntTickets + 1,
       monthlyExpenses: {
@@ -104,11 +110,14 @@ class Scenario extends Component {
     });
   };
 
+  //The user chooses to pay all monthly expenses, but only partial rent
   partialRent = () => {
     const newCntNoRent = this.state.cntNoRent + 1;
     var newScene = '';
-
-    if (newCntNoRent == 1 && this.state.cntTickets == 2) {
+    const newCurrCase = this.state.currentCase + 'A6';
+    if (newCurrCase == '2B3A4A5A6') {
+      newScene = 'partialRentEvictionWarning';
+    } else if (newCntNoRent == 1 && this.state.cntTickets == 2) {
       if (this.state.fixBrakeLight == 'true') {
         newScene = 'partialRentEvictionWarning';
       } else if (this.state.ignoredBrakeTicket == 'true') {
@@ -121,12 +130,14 @@ class Scenario extends Component {
     }
 
     this.setState({
+      currentCase: newCurrCase,
       scene: newScene,
       cntNoRent: newCntNoRent,
       ticket: 'speeding',
     });
   };
 
+  //The user chooses to pay all monthly expenses, but only partial childcare
   partialChildCare = () => {
     const newNoChildcare = this.state.cntNoChildcare + 1;
     var newScene = '';
@@ -148,10 +159,11 @@ class Scenario extends Component {
     });
   };
 
+  //The user chooses to pay off the speeding ticket
   paySpeedTicket = () => {
-    const newTotal = 1100; //TODO: make it general
-
+    const newTotal = 1100;
     this.setState({
+      currentCase: this.state.currentCase + 'A5',
       scene: '2A3',
       cntTickets: this.state.cntTickets + 1,
       monthlyExpenses: {
@@ -162,6 +174,7 @@ class Scenario extends Component {
     });
   };
 
+  //The user chooses to pay off the ticket for broken light, but doesn't fix it
   payTicketIgnoreFixing = () => {
     this.setState({
       scene: 'payBrakeLightTicket',
@@ -169,6 +182,7 @@ class Scenario extends Component {
     });
   };
 
+  //Handler for when user pays partial rent, leading to an eviction warning from the landlord
   partialRentEvictionWarning = () => {
     const newCntNoRent = this.state.cntNoRent + 1;
     this.setState({
@@ -180,47 +194,60 @@ class Scenario extends Component {
     this.setState({ scene: '2A3A4A5A6' });
   };
 
-  payTicketNoExpenses = () => {
-    const newCntTickets = this.state.cntTickets + 1;
-    this.setState({
-      scene: '2A3A4A5',
-      cntTickets: newCntTickets,
-    });
-  };
+  // //
+  // payTicketNoExpenses = () => {
+  //   const newCntTickets = this.state.cntTickets + 1;
+  //   this.setState({
+  //     scene: '2A3A4A5',
+  //     cntTickets: newCntTickets,
+  //   });
+  // };
 
+  //Handler for when user doesn't fix broken light, nor pays his ticket. Only pays monthly expenses
   brokenLight = () => {
     const newunpaidForfeitures = this.state.unpaidForfeitures + 1;
     this.setState({
+      currentCase: this.state.currentCase + 'A4',
       scene: '2A3A4',
       unpaidForfeitures: newunpaidForfeitures,
     });
   };
 
+  //Handler for when user gets a second ticket due to a broken brake light
   secBrokenLight = () => {
     const newunpaidForfeitures = this.state.unpaidForfeitures + 1;
+
     this.setState({
       unpaidForfeitures: newunpaidForfeitures,
       scene: 'secBrokenLight',
     });
   };
+
+  //Handler for when user ignores driving license suspension and continues to drive
   ignoreSuspension = () => {
     this.setState({
       scene: 'ignoreSuspension',
     });
   };
 
+  //Handler for when user stops driving due to suspension
   stopDriving = () => {
     this.setState({ scene: 'stopDriving' });
   };
+
+  //when user misses work to contest brake light ticket
   missWorkcontestTicket = () => {
     const newMonthlyIncome = this.state.monthlyIncome - this.state.hourlyWage * 6;
     const newCntTickets = this.state.cntTickets + 1;
     this.setState({
+      currentCase: '2B3',
       scene: '2B3',
       monthlyIncome: newMonthlyIncome,
       cntTickets: newCntTickets,
     });
   };
+
+  //when user misses work to contest the ticket for speeding
   missWorkcontestSpeedingTicket = () => {
     const newMonthlyIncome = this.state.monthlyIncome - this.state.hourlyWage * 6;
     this.setState({
@@ -229,6 +256,8 @@ class Scenario extends Component {
       ticket: 'speeding',
     });
   };
+
+  //when user ignores the ticket he got for the broken brake light
   ignoreBrakeTicket = () => {
     const newunpaidForfeitures = this.state.unpaidForfeitures + 1;
     const newCntTickets = this.state.cntTickets + 1;
@@ -241,6 +270,7 @@ class Scenario extends Component {
     });
   };
 
+  //user chooses to fix the brake light, so the brake light ticket dismissed, but misses work
   fixBrakeLight = () => {
     const mechanicFee = 45;
     const newMonthlyIncome = this.state.monthlyIncome - this.state.hourlyWage * 3 - mechanicFee;
@@ -251,6 +281,7 @@ class Scenario extends Component {
     });
   };
 
+  //ignore both the broken light ticket, then the speeding ticket
   twoCthreeC = () => {
     const newunpaidForfeitures = this.state.unpaidForfeitures + 1;
     this.setState({
@@ -260,23 +291,28 @@ class Scenario extends Component {
     });
   };
 
-  getHelp = () =>{
+  //user needs to seek help due to surmounting forfeitures
+  getHelp = () => {
     this.setState({
       scene: 'getHelp',
-      
-    })
-  }
+    });
+  };
+
+  //Ignore the ticket user got for speeding
   ignoreSpeedingTicket = () => {
     const newunpaidForfeitures = this.state.unpaidForfeitures + 1;
     var newScene = '';
-
-    if (this.state.ticket == 'speeding' || this.state.fixBrakeLight == 'true') {
+    const newCurrCase = this.state.currentCase + 'C5';
+    if (newCurrCase == '2B3A4C5') {
+      newScene = 'SpeedingLicenseSuspended';
+    } else if (this.state.ticket == 'speeding' || this.state.fixBrakeLight == 'true') {
       newScene = 'SpeedingLicenseSuspended';
     } else {
       newScene = 'brokenLightNoSuspension';
     }
 
     this.setState({
+      currentCase: newCurrCase,
       scene: newScene,
       unpaidForfeitures: newunpaidForfeitures,
       ticket: 'speeding',
@@ -285,7 +321,7 @@ class Scenario extends Component {
 
   render() {
     const scene = this.state.scene;
-
+    console.log('scene: ' + this.state.scene + ' currentCase: ' + this.state.currentCase);
     let main;
 
     switch (scene) {
@@ -298,11 +334,10 @@ class Scenario extends Component {
             <div style={styles.txt} id="text">
               <div>
                 You are 27 years old and a single parent of a 3-year-old child. Every Monday through
-                Friday you drive to work, at a restaurant where you earn ${this.state.hourlyWage}
-                /hour. You are only able to work from 11am-5pm because the restaurant does not open
-                until 11am and you need to pick up your child from daycare by 5:30pm. Working{' '}
-                {this.state.hoursWork} hours/week, your monthly gross income is $
-                {this.state.monthlyIncome}.
+                Friday you drive to work, at a restaurant where you earn $7.25/hour. You are only
+                able to work from 11am-5pm because the restaurant does not open until 11am and you
+                need to pick up your child from daycare by 5:30pm. Working 30 hours/week, your
+                monthly gross income is $941.78.
               </div>
               <div>Your total monthly expenses are ${this.state.monthlyExpenses.total}:</div>
               <div>
@@ -326,7 +361,6 @@ class Scenario extends Component {
               <button style={styles.button} onClick={this.ignoreBrakeTicket}>
                 Ignore the {this.state.ticket} ticket for now, hopefully you can pay it off later.
               </button>
-              
             </div>
           </div>
         );
@@ -337,11 +371,10 @@ class Scenario extends Component {
         main = (
           <div style={styles.txt} id="text">
             {' '}
-            {this.state.scene}
             You paid off your ticket, that means that your monthly expenses were $
             {this.state.monthlyExpenses.total} (your normal monthly expenses of ${monthlyExpenses} +
-            ${this.state.monthlyExpenses.currFine} for your {this.state.ticket} ticket). This means that you were short on your monthly expenses.
-            What do you do?
+            ${this.state.monthlyExpenses.currFine} for your {this.state.ticket} ticket). This means
+            that you were short on your monthly expenses. What do you do?
             <div>
               <button style={styles.button} onClick={this.partialRent}>
                 Pay your normal expenses but just some of your rent.
@@ -361,7 +394,6 @@ class Scenario extends Component {
         main = (
           <div style={styles.txt} id="text">
             {' '}
-            {this.state.scene}
             After missing work for court, missing work for the mechanic, and paying the mechanic,
             you only took home ${this.state.monthlyIncome} this month. You are short on your $900
             monthly expenses. What do you do?
@@ -384,7 +416,6 @@ class Scenario extends Component {
         main = (
           <div style={styles.txt} id="text">
             {' '}
-            {this.state.scene}
             By paying the ticket, you will be short on your normal monthly expenses. What do you do?
             <div>
               <button style={styles.button} onClick={this.partialRentEvictionWarning}>
@@ -404,12 +435,14 @@ class Scenario extends Component {
         main = (
           <div style={styles.txt} id="text">
             {' '}
-            {this.state.scene}
             Your landlord warns you that if you miss rent again, he’ll serve an eviction notice.
             What do you do?{' '}
             <div>
               <button style={styles.button}>
-                Seek help. You don’t know how to catch up on rent, and you can’t risk being evicted.
+                <Link to="../conclusion">
+                  Seek help. You don’t know how to catch up on rent, and you can’t risk being
+                  evicted.
+                </Link>
               </button>
               <button style={styles.button} onClick={this.restart}>
                 Restart
@@ -422,8 +455,6 @@ class Scenario extends Component {
         main = (
           <div style={styles.txt} id="text">
             {' '}
-            {this.state.scene}
-            <div>{this.state.unpaidForfeitures}</div>
             You have not paid off your brake light ticket, but you paid all your normal monthly
             expenses. But you get pulled over again for speeding in violation of Wis. Stat. §
             346.57(2). You are issued a traffic citation with a forfeiture of $200 under Wis. Stat.
@@ -449,11 +480,9 @@ class Scenario extends Component {
         break;
 
       case 'SpeedingLicenseSuspended':
-        if (this.state.unpaidForfeitures == 1) {
+        if (this.state.unpaidForfeitures == 1 && this.state.currentCase != '2B3A4C5') {
           main = (
             <div style={styles.txt} id="text">
-              {' '}
-              {this.state.scene}
               You have an unpaid forfeiture for speeding. Your driver’s license is suspended for one
               year from the date of your speeding conviction. What do you do?
               <div>
@@ -472,7 +501,6 @@ class Scenario extends Component {
         } else {
           main = (
             <div style={styles.txt} id="text">
-              <div>{this.state.scene}</div>
               You have two unpaid forfeitures, one for the broken brake light and another for
               speeding. Your driver’s license is suspended for one year from the date of your
               speeding conviction. What do you do?
@@ -515,7 +543,6 @@ class Scenario extends Component {
           main = (
             <div style={styles.txt} id="text">
               {' '}
-              {this.state.scene}
               You missed a day of work and went to court without a lawyer. The judge agreed to stay
               the brake light ticket and dismiss it if you show proof that you repaired your brake
               light within 30 days. Because you missed work, your monthly income is only $898.28.
@@ -543,20 +570,16 @@ class Scenario extends Component {
       case 'unpaidBrakeTickeUnpaidRent':
         main = (
           <div style={styles.txt} id="text">
-            {this.state.scene}
-            {this.state.unpaidForfeitures}
-            <div>{this.state.cntTickets}</div>
             The same police officer who pulled you over for a broken brake light pulls you over
             again because it is still broken. You are issued a traffic citation with a forfeiture of
             $150 under Wis. Stat. § 347.30(2). What do you do?
             <div style={styles.rows}>
-        {/*TODO: talk to Kelsey about the scenario 2C3A4B5 */}
-              {/* <button style={styles.button} onClick={this.payTicketIgnoreFixing}>
-                Pay off the $150 ticket, making you short on your normal monthly expenses.
-              </button> */}
-              <button style={styles.button}>
+              {/* <button style={styles.button}>
                 Seek help. You don’t know how to pay all these forfeitures.
-              </button>
+            </button>*/}
+              <Link to="../conclusion">
+                Seek help. You don’t know how to pay all these forfeitures.
+              </Link>
               <button style={styles.button} onClick={this.restart}>
                 Restart
               </button>
@@ -569,9 +592,6 @@ class Scenario extends Component {
         if (this.state.cntNoChildcare == 1) {
           main = (
             <div style={styles.txt} id="text">
-              {this.state.scene}
-              {this.state.unpaidForfeitures}
-              <div>{this.state.cntTickets}</div>
               The same police officer who pulled you over for a broken brake light pulls you over
               again because it is still broken. You are issued a traffic citation with a forfeiture
               of $150 under Wis. Stat. § 347.30(2). What do you do?
@@ -579,9 +599,9 @@ class Scenario extends Component {
                 <button style={styles.button} onClick={this.payTicketIgnoreFixing}>
                   Pay off the $150 ticket, making you short on your normal monthly expenses.
                 </button>
-                <button style={styles.button}>
+                <Link to="../conclusion">
                   Seek help. You don’t know how to pay all these forfeitures.
-                </button>
+                </Link>
                 <button style={styles.button} onClick={this.restart}>
                   Restart
                 </button>
@@ -595,9 +615,12 @@ class Scenario extends Component {
               two weeks or you can no longer bring your child. Unfortunately, you are not able to
               increase your hours at work, and you have no way to makeup these costs. You have to
               stop taking your child to daycare. What do you do?
-              <button style={styles.button}>
+              {/* <button style={styles.button}>
                 Seek legal help. If you are evicted, you will not be able to find another apartment.
-              </button>
+              </button> */}
+              <Link to="../conclusion">
+                Seek legal help. If you are evicted, you will not be able to find another apartment.
+              </Link>
               <div>
                 <button style={styles.button} onClick={this.restart}>
                   Restart
@@ -629,9 +652,9 @@ class Scenario extends Component {
                   Ignore the speeding ticket for now, hopefully you can pay it off later.
                 </button>
                 <div>
-                <button style={styles.button} onClick={this.restart}>
-                  Restart
-                </button>
+                  <button style={styles.button} onClick={this.restart}>
+                    Restart
+                  </button>
                 </div>
               </div>
             </div>
@@ -639,11 +662,11 @@ class Scenario extends Component {
         } else {
           main = (
             <div style={styles.txt} id="text">
-              You have now paid only a portion of your rent two months in a row. Your landlord gives you an eviction notice. What do
-              you do?
-              <button style={styles.button}>
+              You have now paid only a portion of your rent two months in a row. Your landlord gives
+              you an eviction notice. What do you do?<br></br>
+              <Link to="../conclusion">
                 Seek legal help. If you are evicted, you will not be able to find another apartment.
-              </button>
+              </Link>
               <div>
                 <button style={styles.button} onClick={this.restart}>
                   Restart
@@ -657,7 +680,6 @@ class Scenario extends Component {
       case '2A3A4A5':
         main = (
           <div style={styles.txt} id="text">
-            {this.state.scene}
             You paid off your ticket, that means that your monthly expenses were $
             {this.state.monthlyExpenses.total} (your normal monthly expenses of $
             {this.state.monthlyExpenses.total - this.state.monthlyExpenses.fine} + $
@@ -671,6 +693,7 @@ class Scenario extends Component {
                 Pay your normal expenses but just some of your childcare, you cannot afford to pay
                 your $200 childcare.
               </button>
+              <br></br>
               <button style={styles.button} onClick={this.restart}>
                 Restart
               </button>
@@ -683,17 +706,18 @@ class Scenario extends Component {
         if (this.state.cntNoChildcare != 2) {
           main = (
             <div style={styles.txt} id="text">
-              {this.state.scene}
-              {this.state.cntNoChildcare}
-              {this.state.cntTickets}
               Your childcare provider warns you that you need to makeup this month’s payment within
               two weeks or you can no longer bring your child. You have no way to catch up, and so
               you quit your job and stay home with your child. Now your income is gone. What do you
               do?
-              <button style={styles.button}>
-              Seek help. Without childcare, you cannot work. You need income.
-              </button>
               <div>
+                {/*<button style={styles.button}>
+                  Seek help. Without childcare, you cannot work. You need income.
+                </button>*/}
+                <Link to="../conclusion">
+                  Seek help. Without childcare, you cannot work. You need income.
+                </Link>
+                <br></br>
                 <button style={styles.button} onClick={this.restart}>
                   Restart
                 </button>{' '}
@@ -703,14 +727,16 @@ class Scenario extends Component {
         } else if (this.state.unpaidForfeitures == 2) {
           main = (
             <div style={styles.txt} id="text">
-              {this.state.scene}
               Your childcare provider warns you that you need to makeup this month’s payment within
               two weeks or you can no longer bring your child. You have no way to catch up, and so
               you quit your job and stay home with your child. Now your income is gone. What do you
               do?
-              <button style={styles.button}>
-              Seek legal help. Without childcare, you cannot work. You need income.
-              </button>
+              {/*<button style={styles.button}>
+                  Seek help. Without childcare, you cannot work. You need income.
+                </button>*/}
+              <Link to="../conclusion">
+                Seek help. Without childcare, you cannot work. You need income.
+              </Link>
               <div>
                 <button style={styles.button} onClick={this.restart}>
                   Restart
@@ -721,14 +747,15 @@ class Scenario extends Component {
         } else {
           main = (
             <div style={styles.txt} id="text">
-              {this.state.scene}
-              {this.state.unpaidForfeitures}
-              This is the second month in a row that you have missed parts of your childcare payment. Your childcare provider
-              tells you to stop bringing your child until you make up the full $350 you owe. What do
-              you do?
-              <button style={styles.button}>
-                Seek legal help. Without childcare, you cannot work. You need income.
-              </button>
+              This is the second month in a row that you have missed parts of your childcare
+              payment. Your childcare provider tells you to stop bringing your child until you make
+              up the full $350 you owe. What do you do?
+              {/*<button style={styles.button}>
+                  Seek help. Without childcare, you cannot work. You need income.
+                </button>*/}
+              <Link to="../conclusion">
+                Seek help. Without childcare, you cannot work. You need income.
+              </Link>
               <div>
                 <button style={styles.button} onClick={this.restart}>
                   Restart
@@ -742,9 +769,9 @@ class Scenario extends Component {
         if (this.state.unpaidForfeitures != 2) {
           main = (
             <div style={styles.txt} id="text">
-              2A3A4B5 You missed a day of work and went to court without a lawyer. The judge gave
-              you a point reduction but did not reduce your forfeiture amount. Because you missed a
-              day of work, your monthly income is only $898.28. What do you do?
+              You missed a day of work and went to court without a lawyer. The judge gave you a
+              point reduction but did not reduce your forfeiture amount. Because you missed a day of
+              work, your monthly income is only $898.28. What do you do?
               <div>
                 <button style={styles.button} onClick={this.paySpeedTicket}>
                   Pay the speeding ticket, making you short for your other monthly expenses.
@@ -761,7 +788,6 @@ class Scenario extends Component {
         } else {
           main = (
             <div style={styles.txt} id="text">
-              <div>{this.state.scene}</div>
               You have two unpaid forfeitures, one for the broken brake light and another for
               speeding. Your driver’s license is suspended for one year from the date of your
               speeding conviction. What do you do?
@@ -785,13 +811,17 @@ class Scenario extends Component {
         if (this.state.unpaidForfeitures != 1) {
           main = (
             <div style={styles.txt} id="text">
-              {this.state.scene}; The same police officer who pulled you over for a broken brake
-              light pulls you over again because it is still broken. You are issued another traffic
-              citation with a forfeiture of $150 under Wis. Stat. § 347.30(2). What do you do?
+              The same police officer who pulled you over for a broken brake light pulls you over
+              again because it is still broken. You are issued another traffic citation with a
+              forfeiture of $150 under Wis. Stat. § 347.30(2). What do you do?
               <div>
-                <button style={styles.button}>
+                {/*<button style={styles.button}>
+
                   Seek help. You don’t know how to pay all these forfeitures.
-                </button>
+                </button>*/}
+                <Link to="../conclusion">
+                  Seek help. You don’t know how to pay all these forfeitures.
+                </Link>
                 <button style={styles.button} onClick={this.restart}>
                   Restart
                 </button>
@@ -801,8 +831,6 @@ class Scenario extends Component {
         } else {
           main = (
             <div style={styles.txt} id="text">
-              {this.state.scene};<div>ticket: {this.state.ticket}</div>
-              <div>unpaid Forfeitures: {this.state.unpaidForfeitures}</div>
               The same police officer who pulled you over for a broken brake light pulls you over
               again because it is still broken. You are issued another traffic citation with a
               forfeiture of $150 under Wis. Stat. § 347.30(2). What do you do?
@@ -820,8 +848,8 @@ class Scenario extends Component {
                   your brake light.
                 </button>
                 <button style={styles.button} onClick={this.restart}>
-                Restart
-              </button>
+                  Restart
+                </button>
               </div>
             </div>
           );
@@ -835,10 +863,14 @@ class Scenario extends Component {
             brake light violation. Your driver’s license is suspended for one year from the date of
             your broken brake light conviction. What do you do?
             <div>
-              <button style={styles.button}>
+              {/* <button style={styles.button}>
                 Seek legal help. The forfeitures are becoming insurmountable, and and you need your
                 license back to drive to work.
-              </button>
+              </button> */}
+              <Link to="../conclusion">
+                Seek legal help. The forfeitures are becoming insurmountable, and and you need your
+                license back to drive to work.
+              </Link>
               <button style={styles.button} onClick={this.restart}>
                 Restart
               </button>
@@ -854,10 +886,15 @@ class Scenario extends Component {
             another for driving without a license under Wis. Stat. § 343.05(3)(a) with a forfeiture
             of $300. What do you do?
             <div>
-              <button style={styles.button}>
+              {/* <button style={styles.button}>
                 Seek legal help. The forfeitures are becoming insurmountable, and you need to drive
                 to work.
-              </button>
+              </button> */}
+              <Link to="../conclusion">
+                Seek legal help. The forfeitures are becoming insurmountable, and you need to drive
+                to work.
+              </Link>
+
               <button style={styles.button} onClick={this.restart}>
                 Restart
               </button>
@@ -869,27 +906,31 @@ class Scenario extends Component {
       case 'getHelp':
         main = (
           <div style={styles.txt} id="text">
-            {this.state.scene}{''}
-          conclusion message
-          <div>
-            <button style={styles.button} onClick={this.restart}>
-              Restart
-            </button>
+            {''}
+            conclusion message
+            <div>
+              <button style={styles.button} onClick={this.restart}>
+                Restart
+              </button>
+            </div>
           </div>
-        </div>
         );
-        break;  
+        break;
 
       case 'stopDriving':
         main = (
           <div style={styles.txt} id="text">
             Without driving, you cannot get to work, and you are worried you’ll be evicted if you
-            keep paying rent. What do you do?
+            don't pay rent. What do you do?
             <div>
-              <button style={styles.button}>
+              {/* <button style={styles.button}>
                 Seek legal help. The forfeitures are becoming insurmountable, and you need to drive
                 to work.
-              </button>
+              </button> */}
+              <Link to="../conclusion">
+                Seek legal help. The forfeitures are becoming insurmountable, and you need to drive
+                to work.
+              </Link>
               <button style={styles.button} onClick={this.restart}>
                 Restart
               </button>
