@@ -18,7 +18,7 @@ const items = [
     {
         uuid: 3,
         heading: "Operating While Suspended Suspensions",
-        content: "An <b>operating While Suspended (OWS) suspension</b> is a discretionary court-ordered suspension based on an operating while suspended conviction. These can last up to six months.        ",
+        content: "An <b>Operating While Suspended (OWS) suspension</b> is a discretionary court-ordered suspension based on an operating while suspended conviction. These can last up to six months.        ",
     },
     {
         uuid: 4,
