@@ -11,7 +11,7 @@ import ReactHtmlParser from 'react-html-parser';
 const popover = (
   <Popover id="popover-basic">
     <Popover.Title as="h3">shall</Popover.Title>
-    <Popover.Content>Define "shall" here</Popover.Content>
+    <Popover.Content>In statutory language the word "shall" means "must."</Popover.Content>
   </Popover>
 );
 
