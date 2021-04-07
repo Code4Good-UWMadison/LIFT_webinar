@@ -13,13 +13,14 @@ const items = [
     uuid: 1,
     heading: 'Failure to Pay Forfeiture Suspensions',
     content:
-      '<b>Failure to Pay Forfeiture (FPF) suspensions</b> are one-year suspensions for failure to pay a traffic ticket. This is the most common suspension, accounting for 59% of all suspensions in 2018. It is also the most frequent suspension among our clinic clients. Sometimes it is accompanied by additional suspensions and other types of suspensions.',
+      '<b>Failure to Pay Forfeiture (FPF) suspensions</b> are one-year suspensions for failure to pay a traffic ticket. This is the most common suspension. It is also the most frequent suspension among our clinic clients. Sometimes FPF suspensions are accompanied by other types of suspensions.',
   },
   {
     uuid: 2,
     heading: 'Driving Record Suspensions',
     content:
-      'Another common suspension is the <b>Driving Record (DR) or “points,” suspension</b> This occurs when a driver accrues 12 or more demerit points (received due to traffic tickets) in any twelve-month period. The length of the suspension depends upon the total number of points the driver has and the type of license they hold.        ',
+      'Another common suspension is the <b>Driving Record (DR) or “points,” suspension</b> This occurs when a driver accrues 12 or more demerit points (received due to traffic tickets) in any twelve-month period. The length of the suspension depends upon the total number of points the driver has and the type of license they hold.
+',
   },
   {
     uuid: 3,
@@ -74,12 +75,6 @@ const items = [
     heading: 'Blood Alcohol Content Suspension',
     content:
       'A <b>Blood Alcohol Content (BAC) suspension </b> is an administrative suspension imposed by the DMV for a period of six months when a chemical test result is at least .08 after an OWI arrest.',
-  },
-  {
-    uuid: 12,
-    heading: 'Driver’s License Removals to Address First',
-    content:
-      'There are three types of driver’s license removals that must be dealt with prior to any other suspension or revocation: \n (1) <b>Non-Compliance with Assessment Interview (NCI) revocation</b>. This revocation is due to failure to complete an alcohol assessment following an OWI conviction. The length of the revocation is indefinite and lasts until the assessment is completed.\n(2) <b>Non-Compliance with Assessment Fee (NCF) suspension</b>. This suspension occurs due to failure to pay an alcohol assessment fee after receiving an OWI conviction. The length of the suspension is indefinite unless/until the assessment fee is paid.\n(3) <b>Non-Compliance with Safety Plan (NCP) revocation</b>. This revocation is due to failure to complete a driver safety plan following an OWI conviction. This revocation is indefinite until the Safety Plan is completed.',
   },
 ];
 
