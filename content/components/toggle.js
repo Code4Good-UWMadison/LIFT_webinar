@@ -19,8 +19,7 @@ const items = [
     uuid: 2,
     heading: 'Driving Record Suspensions',
     content:
-      'Another common suspension is the <b>Driving Record (DR) or “points,” suspension</b> This occurs when a driver accrues 12 or more demerit points (received due to traffic tickets) in any twelve-month period. The length of the suspension depends upon the total number of points the driver has and the type of license they hold.
-',
+      'Another common suspension is the <b>Driving Record (DR) or “points,” suspension</b> This occurs when a driver accrues 12 or more demerit points (received due to traffic tickets) in any twelve-month period. The length of the suspension depends upon the total number of points the driver has and the type of license they hold.',
   },
   {
     uuid: 3,
