@@ -73,7 +73,7 @@ const Header = ({ location, isDarkThemeActive, toggleActiveTheme }) => (
       } = data;
 
       return (
-        <div className={'navBarWrapper'}>
+        <div className={'navBarWrapper'}  style={{position: “fixed”}}>
           <nav className={'navBarDefault'}>
             <div className={'navBarHeader'}>
               <div
