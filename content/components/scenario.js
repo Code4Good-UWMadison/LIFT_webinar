@@ -341,9 +341,9 @@ class Scenario extends Component {
               </div>
               <div>Your total monthly expenses are ${this.state.monthlyExpenses.total}:</div>
               <div>
-                {this.state.monthlyExpenses.rent} for rent<br></br>
-                {this.state.monthlyExpenses.childcare} for childcare<br></br>
-                {this.state.monthlyExpenses.groceries} for groceries<br></br>
+                ${this.state.monthlyExpenses.rent} for rent<br></br>
+                ${this.state.monthlyExpenses.childcare} for childcare<br></br>
+                ${this.state.monthlyExpenses.groceries} for groceries<br></br>
               </div>
               <br></br>
               On your way to work, you get pulled over for a broken brake light in violation of Wis.
