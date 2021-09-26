@@ -46,7 +46,7 @@ const config = {
         // ],
         frontline: false,
         ignoreIndex: true,
-        title: "<a href='https://www.coding4good.net'>C4G&nbsp;</a> &nbsp; x &nbsp; <a href='https://www.liftdane.org'>LIFT Dane</a>",
+        title: "<a href='https://www.coding4good.net'>C4G&nbsp;</a> &nbsp; x &nbsp; <a href='https://www.liftwisconsin.org'>LIFT Wisconsin</a>",
     },
     siteMetadata: {
         title: 'Gatsby Gitbook Boilerplate | Hasura',
