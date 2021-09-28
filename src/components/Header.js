@@ -98,10 +98,11 @@ const Header = ({ location, isDarkThemeActive, toggleActiveTheme }) => (
                   </li>
                 ) : null}
                 <li>
-                  <DarkModeSwitch
+                  {/* The button below enables Dark Mode, removed since the client didn't want it */}
+                  {/* <DarkModeSwitch
                     isDarkThemeActive={isDarkThemeActive}
                     toggleActiveTheme={toggleActiveTheme}
-                  />
+                  /> */}
                 </li>
               </ul>
             </div>
