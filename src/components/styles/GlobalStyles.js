@@ -3,6 +3,7 @@ import { injectGlobal } from 'emotion';
 export const baseStyles = injectGlobal`
   @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
   @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap');
+  @import url('http://fonts.cdnfonts.com/css/sofia-pro');
   * {
     margin: 0;
     padding: 0;
@@ -244,7 +245,7 @@ export const baseStyles = injectGlobal`
   }
 
   .logoContent {
-    font-family: 'Roboto';
+    font-family: 'Sofia Pro', sans-serif;
     margin-left: 16px;
     font-size: 28px;
     line-height: 1.5;
@@ -398,14 +399,14 @@ export const baseStyles = injectGlobal`
   .headerNav {
     font-family: 'Roboto';
     padding: 0px 24px;
-    color: #001933;
+    color: #0B439F;
     font-size: 16px;
     font-weight: 500;
     line-height: 1em;
   }
 
   .headerNav a {
-    color: #001933;
+    color: #0B439F;
     text-decoration: none;
   }
 

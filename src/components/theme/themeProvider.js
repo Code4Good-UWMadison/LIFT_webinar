@@ -4,7 +4,7 @@ import { Global } from '@emotion/core';
 
 import { lightTheme, darkTheme } from './index';
 import Header from '../Header';
-import { baseStyles } from '../styles/GlobalStyles';
+import { baseStyles } from '../styles/s';
 
 class ThemeProvider extends React.Component {
   state = {
