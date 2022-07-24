@@ -397,7 +397,7 @@ export const baseStyles = injectGlobal`
   }
 
   .headerNav {
-    font-family: 'Roboto';
+    font-family: 'Sofia Pro', sans-serif;
     padding: 0px 24px;
     color: #0B439F;
     font-size: 16px;
