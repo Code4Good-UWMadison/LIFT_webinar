@@ -757,7 +757,6 @@ export const baseStyles = injectGlobal`
     .headerTitle {
       padding-right: 50px;
       font-size: 16px;
-      color: red;
     }
     .navBarBrand {
       min-height: 40px;

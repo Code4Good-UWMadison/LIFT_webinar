@@ -9,7 +9,7 @@ const lightTheme = {
   colors: {
     background: '#fff',
     heading: '#000',
-    text: '#3B454E',
+    text: '#ff0000',
     preFormattedText: 'rgb(245, 247, 249)',
     link: '#1000EE',
   },
