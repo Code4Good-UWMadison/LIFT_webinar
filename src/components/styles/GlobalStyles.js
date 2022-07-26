@@ -519,7 +519,6 @@ export const baseStyles = injectGlobal`
     padding-bottom: 40px;
     border-bottom: 1px solid rgb(230, 236, 241);
     margin-bottom: 32px;
-    color: red;
   }
 
   .gitBtn {
@@ -758,6 +757,7 @@ export const baseStyles = injectGlobal`
     .headerTitle {
       padding-right: 50px;
       font-size: 16px;
+      color: red;
     }
     .navBarBrand {
       min-height: 40px;
