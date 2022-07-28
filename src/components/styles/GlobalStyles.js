@@ -228,7 +228,7 @@ export const baseStyles = injectGlobal`
     font-size: 16px;
     line-height: 1.5;
     font-weight: 300;
-    color: #fff !important;
+    color: #ff0000 !important;
     margin-top: 16px;
     text-transform: uppercase;
   }
