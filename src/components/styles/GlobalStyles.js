@@ -223,6 +223,7 @@ export const baseStyles = injectGlobal`
     font-size: 14px;
   }
   .headerTitle {
+    color: #ff0000
     height: auto;
     font-size: 16px;
     line-height: 1.5;
@@ -232,7 +233,7 @@ export const baseStyles = injectGlobal`
     text-transform: uppercase;
   }
   .headerTitle a {
-    color: #fff;
+    color: #fff000;
   }
 
   .headerTitle a:hover {
