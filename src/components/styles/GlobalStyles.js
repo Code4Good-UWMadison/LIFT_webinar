@@ -39,6 +39,7 @@ export const baseStyles = injectGlobal`
 
   body {
     font-family: 'Roboto';
+    color: #ff0000
   }
   .visibleMobile {
     display: none;
