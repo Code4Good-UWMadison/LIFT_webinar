@@ -39,7 +39,6 @@ export const baseStyles = injectGlobal`
 
   body {
     font-family: 'Roboto';
-    color: #ff0000
   }
   .visibleMobile {
     display: none;
@@ -678,6 +677,7 @@ export const baseStyles = injectGlobal`
     line-height: 1.5;
     margin-bottom: 16px;
     margin-top: 32px;
+    color: #ff0000
   }
 
   .heading3 {
