@@ -32,6 +32,11 @@ export const baseStyles = injectGlobal`
     scroll-behavior: smooth;
   }
 
+  h1 {
+    font-family: 'Sofia Pro', sans-serif;
+    font-weight: bold;
+  }
+
   a {
     transition: color 0.15s;
     /* color: #663399; */
