@@ -756,6 +756,7 @@ export const baseStyles = injectGlobal`
     .headerTitle {
       padding-right: 50px;
       font-size: 16px;
+      font-family: 'Sofia Pro', sans-serif;
     }
     .navBarBrand {
       min-height: 40px;
