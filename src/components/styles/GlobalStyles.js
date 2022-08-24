@@ -470,7 +470,7 @@ export const baseStyles = injectGlobal`
   }
 
   .sideBarUL .item > a {
-    color: #1ED3C6;
+    color: #00A63E;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -677,7 +677,6 @@ export const baseStyles = injectGlobal`
     line-height: 1.5;
     margin-bottom: 16px;
     margin-top: 32px;
-    color: #ff0000
   }
 
   .heading3 {
