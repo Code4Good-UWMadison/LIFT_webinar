@@ -470,7 +470,8 @@ export const baseStyles = injectGlobal`
   }
 
   .sideBarUL .item > a {
-    color: #00A63E !important;
+    // color: #00A63E !important;
+    font-family: 'Sofia Pro', sans-serif;
     text-decoration: none;
     display: flex;
     align-items: center;
