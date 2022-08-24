@@ -470,7 +470,7 @@ export const baseStyles = injectGlobal`
   }
 
   .sideBarUL .item > a {
-    color: #00A63E;
+    color: #00A63E !important;
     text-decoration: none;
     display: flex;
     align-items: center;
