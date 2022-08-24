@@ -450,7 +450,7 @@ export const baseStyles = injectGlobal`
   }
 
   .hideFrontLine .active > a {
-    background-color: #1ed3c6;
+    background-color: #00A63E;
     color: #fff !important;
   }
   .firstLevel ul li .collapser svg path {
