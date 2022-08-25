@@ -236,8 +236,8 @@ export const baseStyles = injectGlobal`
     text-transform: uppercase;
   }
 
-  .headerTitle:after {
-    content:url(https://uploads-ssl.webflow.com/6085eec236345de83972ae07/60bf85867e76fc6b63002085_LIFT%20WISCONSIN%20logo%20H-tag%20copy.png);
+  .headerTitle::after {
+    content:url(../images/Lift_Logo.png);;
   }
 
   .headerTitle a {
