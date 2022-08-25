@@ -226,6 +226,7 @@ export const baseStyles = injectGlobal`
     color: black;
     font-size: 14px;
   }
+
   .headerTitle {
     height: auto;
     font-size: 16px;
@@ -233,8 +234,8 @@ export const baseStyles = injectGlobal`
     font-weight: 300;
     color: #fff !important;
     text-transform: uppercase;
-    padding-right: 500px;
-    margin-top: -20px;
+    margin-right: 50px;
+    margin-top: -10px;
   }
 
   .headerTitle:after {
