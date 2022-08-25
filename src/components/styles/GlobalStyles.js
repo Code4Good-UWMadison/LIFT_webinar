@@ -233,7 +233,8 @@ export const baseStyles = injectGlobal`
     font-weight: 300;
     color: #fff !important;
     text-transform: uppercase;
-    padding-right: 50px;
+    padding-right: 500px;
+    margin-top: -20px;
   }
 
   .headerTitle:after {
