@@ -237,7 +237,7 @@ export const baseStyles = injectGlobal`
   }
 
   .headerTitle:after {
-    content:url(https://uploads-ssl.webflow.com/6085eec236345de83972ae07/60bf85867e76fc6b63002085_LIFT%20WISCONSIN%20logo%20H-tag%20copy.png);
+    content:url(https://ibb.co/zVS76fR);
   }
 
   .headerTitle a {
