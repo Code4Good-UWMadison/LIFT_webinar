@@ -9,7 +9,7 @@ const config = {
         // logo: 'https://graphql-engine-cdn.hasura.io/learn-hasura/assets/homepage/brand.svg',
         // logoLink: 'https://hasura.io/learn/',
         title: 'LIFT Wisconsin Driver\'s License Recovery Training',
-        githubUrl: 'https://github.com/Code4Good-UWMadison/LIFT_webinar',
+        // githubUrl: 'https://github.com/Code4Good-UWMadison/LIFT_webinar',
         // links: [{ text: '', link: '' }],
         search: {
             enabled: false,

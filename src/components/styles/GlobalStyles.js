@@ -237,7 +237,7 @@ export const baseStyles = injectGlobal`
   }
 
   .headerTitle:after {
-    content:url(https://ibb.co/zVS76fR);
+    content:url(https://i.ibb.co/MkRGBNV/Lift-Logo.png);
   }
 
   .headerTitle a {
