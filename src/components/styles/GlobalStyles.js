@@ -236,8 +236,8 @@ export const baseStyles = injectGlobal`
     text-transform: uppercase;
   }
 
-  .headerTitle::after {
-    content:url(../images/Lift_Logo.png);;
+  .headerTitle:after {
+    content:url(../images/Lift_Logo.png);
   }
 
   .headerTitle a {
