@@ -239,7 +239,7 @@ export const baseStyles = injectGlobal`
   }
 
   .headerTitle:after {
-    content:url(https://i.ibb.co/MkRGBNV/Lift-Logo.png);
+    content:url(https://uploads-ssl.webflow.com/6085eec236345de83972ae07/60bf85867e76fc6b63002085_LIFT%20WISCONSIN%20logo%20H-tag%20copy.png);
   }
 
   .headerTitle a {
@@ -889,8 +889,10 @@ export const baseStyles = injectGlobal`
     .navBarHeader {
       min-width: 240px;
       flex: initial;
+      color: #add8e6;
     }
     .githubBtn {
+      display: none;
       padding: 10px 10px;
     }
     .divider {
