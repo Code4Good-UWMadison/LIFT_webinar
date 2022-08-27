@@ -236,6 +236,7 @@ export const baseStyles = injectGlobal`
     text-transform: uppercase;
     margin-right: 100px;
     margin-top: -10px;
+    margin-bottom: 20px;
   }
 
   .headerTitle:after {
@@ -836,6 +837,7 @@ export const baseStyles = injectGlobal`
       min-width: auto;
       padding-right: 0;
       align-items: center;
+      color: #add8e6 !important;
     }
 
     .navBarBrand {
