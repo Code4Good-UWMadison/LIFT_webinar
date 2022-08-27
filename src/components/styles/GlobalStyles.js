@@ -399,6 +399,7 @@ export const baseStyles = injectGlobal`
   }
 
   .sidebarTitle a {
+    display: none;
     color: #001934;
   }
 
