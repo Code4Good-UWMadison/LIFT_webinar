@@ -235,7 +235,7 @@ export const baseStyles = injectGlobal`
     color: #fff !important;
     text-transform: uppercase;
     margin-right: 100px;
-    margin-top: 10px;
+    margin-top: 15px;
     margin-bottom: 20px;
   }
 
