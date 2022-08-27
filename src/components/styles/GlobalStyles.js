@@ -235,7 +235,7 @@ export const baseStyles = injectGlobal`
     color: #fff !important;
     text-transform: uppercase;
     margin-right: 100px;
-    margin-top: 20px;
+    margin-top: 25px;
     margin-bottom: 20px;
   }
 
@@ -539,7 +539,7 @@ export const baseStyles = injectGlobal`
   .gitBtn {
     height: 30px;
     min-height: 30px;
-    display: flex;
+    display: none !important;
     align-items: center;
   }
 
@@ -853,7 +853,7 @@ export const baseStyles = injectGlobal`
     }
 
     .gitBtn {
-      display: none;
+      display: none !important;
     }
 
     .mobileView {
