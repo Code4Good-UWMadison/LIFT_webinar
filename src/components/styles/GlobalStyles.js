@@ -627,7 +627,7 @@ export const baseStyles = injectGlobal`
   }
   /* end image */
   .githubBtn {
-    display: flex;
+    display: none !important;
     align-items: center;
     font-size: 16px;
     padding: 10px 0px;
@@ -889,7 +889,7 @@ export const baseStyles = injectGlobal`
     .navBarHeader {
       min-width: 240px;
       flex: initial;
-      color: #add8e6;
+      color: #add8e6 !important;
     }
     .githubBtn {
       display: none;
