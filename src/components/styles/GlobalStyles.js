@@ -234,14 +234,14 @@ export const baseStyles = injectGlobal`
     font-weight: 300;
     color: #fff !important;
     text-transform: uppercase;
-    margin-right: 100px;
-    margin-top: 15px;
+    margin-right: 1000px;
+    margin-top: 20px;
     margin-bottom: 20px;
   }
 
   .headerTitle:after {
     margin-top: 30px;
-    margin-left: 30px;
+    margin-left: 3000px;
     content:url(https://uploads-ssl.webflow.com/6085eec236345de83972ae07/60bf85867e76fc6b63002085_LIFT%20WISCONSIN%20logo%20H-tag%20copy.png);
   }
 
