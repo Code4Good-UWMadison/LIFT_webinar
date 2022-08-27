@@ -390,7 +390,7 @@ export const baseStyles = injectGlobal`
     font-size: 18px;
     font-weight: 600;
     color: #001934;
-    display: flex;
+    display: none !important;
     align-items: center;
   }
 
