@@ -853,7 +853,7 @@ export const baseStyles = injectGlobal`
     }
 
     .gitBtn {
-      display: inline-block;
+      display: none;
     }
 
     .mobileView {
