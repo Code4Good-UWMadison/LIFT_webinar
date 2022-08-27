@@ -240,6 +240,8 @@ export const baseStyles = injectGlobal`
   }
 
   .headerTitle:after {
+    margin-top: 30px;
+    margin-left: 30px;
     content:url(https://uploads-ssl.webflow.com/6085eec236345de83972ae07/60bf85867e76fc6b63002085_LIFT%20WISCONSIN%20logo%20H-tag%20copy.png);
   }
 
@@ -837,7 +839,7 @@ export const baseStyles = injectGlobal`
       min-width: auto;
       padding-right: 0;
       align-items: center;
-      color: #add8e6 !important;
+      background-color: #add8e6 !important;
     }
 
     .navBarBrand {
