@@ -394,6 +394,10 @@ export const baseStyles = injectGlobal`
     align-items: center;
   }
 
+  .sidebarUL li ul:first-child {
+    color: #1d4498;
+  }
+
   .sideBarShow {
     display: none;
   }
