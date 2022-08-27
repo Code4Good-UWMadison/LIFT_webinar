@@ -837,8 +837,6 @@ export const baseStyles = injectGlobal`
     .navBarHeader {
       display: flex;
       min-width: auto;
-      padding-right: 0;
-      align-items: center;
       background-color: #add8e6 !important;
     }
 
