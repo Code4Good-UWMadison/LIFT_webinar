@@ -272,13 +272,13 @@ export const baseStyles = injectGlobal`
     padding: 0 !important;
   }
   .navBarDefault {
-    background-color: #0B439F;
+    background-color: #add8e6;
     border-radius: 0;
     border-top: 0;
     margin-bottom: 0;
     border: 0;
     display: flex;
-    align-items: center;
+    align-items: none;
     box-shadow: -1px 0px 4px 1px rgba(175, 158, 232, 0.4);
     -webkit-box-shadow: -1px 0px 4px 1px rgba(175, 158, 232, 0.4);
     -moz-box-shadow: -1px 0px 4px 1px rgba(175, 158, 232, 0.8);
@@ -837,7 +837,6 @@ export const baseStyles = injectGlobal`
     .navBarHeader {
       display: flex;
       min-width: auto;
-      background-color: #add8e6 !important;
     }
 
     .navBarBrand {
