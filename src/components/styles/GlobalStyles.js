@@ -398,6 +398,10 @@ export const baseStyles = injectGlobal`
     color: #1d4498;
   }
 
+  .sidebarUL li:first-child {
+    color: #1d4498;
+  }
+
   .sidebarUL .item > a:first-child {
     color: #1d4498;
   }
